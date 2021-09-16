@@ -1,0 +1,14 @@
+animais
+
+  nome
+  nascimento
+  idade
+  especie
+  raca
+  vacinas
+  data
+  descricao
+  doador
+  foto
+  
+	

@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Perfil</ion-title>
+    <ion-img src="assets/logo01.png" slot="end" class="pages-logo"></ion-img>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" *ngIf="auth.user | async as user">
+
+  <!-- Perfil local -->
+  <ion-card class="ion-no-margin">
+    <div class="ion-text-center">
+      <img src="{{ user.photoURL }}" alt="{{ user.displayName }}">
+    </div>
+    <ion-card-header>
+      <ion-card-subtitle>{{ user.email }}</ion-card-subtitle>
+      <ion-card-title>{{ user.displayName }}</ion-card-title>
+      <ion-card-subtitle>{{ user.phoneNumber }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <!-- Perfil social -->
+      <p>
+        Você fez login usando uma conta do Google.
+        Para editar seu perfil e/ou trocar a senha, clique no botão abaixo:
+      </p>
+      <ion-button expand="block" (click)="profile()">
+        <ion-icon name="person" slot="start"></ion-icon>
+        Ver / Editar perfil
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="ion-no-margin ion-margin-top">
+    <ion-card-header>
+      <ion-card-title>Perfil local</ion-card-title>
+    </ion-card-header>
+    <ion-card-content *ngIf="item">
+
+      <ion-list>
+        <ion-item class="ion-no-padding"><strong>Nome:&nbsp;</strong>{{ item.name }}</ion-item>
+        <ion-item class="ion-no-padding"><strong>E-mail:&nbsp;</strong>{{ item.email }}</ion-item>
+        <ion-item class="ion-no-padding"><strong>Telefone:&nbsp;</strong>{{ item.telephone }}</ion-item>
+        <ion-item class="ion-no-padding"><strong>Whatsapp:&nbsp;</strong>{{ item.whatsapp }}</ion-item>
+        <ion-item class="ion-no-padding"><strong>Nascimento:&nbsp;</strong>{{ item.birth }}</ion-item>
+        <ion-item class="ion-no-padding"><strong>CPF:&nbsp;</strong>{{ item.cpf }}</ion-item>
+        <ion-item class="ion-no-padding"><strong>Sexo:&nbsp;</strong>{{ item.gender }}</ion-item>
+        <ion-item class="ion-no-padding">
+
+          <ion-grid class="ion-no-padding ion-padding-vertical">
+            <ion-row><strong>Endereço:&nbsp;</strong></ion-row>
+            <ion-row>{{ item.address }}</ion-row>
+          </ion-grid>
+
+        </ion-item>
+        <ion-item class="ion-no-padding"><strong>PCD:&nbsp;</strong>
+          <span *ngIf="item.pwd">Sim</span>
+          <span *ngIf="!item.pwd">Não</span>
+        </ion-item>
+      </ion-list>
+      <ion-button expand="block" routerLink="/edit/{{ item.uid }}">Editar</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Logout -->
+  <p class="ion-padding-top">Para sair do aplicativo, clique no botão abaixo:</p>
+  <ion-button expand="block" color="danger" routerLink="/user/logout">
+    <ion-icon name="log-out" slot="start"></ion-icon>
+    Sair do Aplicativo
+  </ion-button>
+
+</ion-content>

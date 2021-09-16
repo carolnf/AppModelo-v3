@@ -1,0 +1,67 @@
+<script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-firestore.js"></script>
+<script>
+  // Troque pelas configurações do seu Firebase.com
+  var firebaseConfig = {
+    apiKey: "AIzaSyAN-Tk6GC7M68TXkgtXejKeQhqygUoN7Fw",
+    authDomain: "paradapet-a3ae5.firebaseapp.com",
+    projectId: "paradapet-a3ae5",
+    storageBucket: "paradapet-a3ae5.appspot.com",
+    messagingSenderId: "94549079099",
+    appId: "1:94549079099:web:ee8e601b6f3274ae66181e",
+  };
+  firebase.initializeApp(firebaseConfig);
+  var db = firebase.firestore();
+</script>
+<script>
+  db.collection("animais")
+    .add({
+      nome: "Milo",
+      nascimento: "03/03/2015",
+      idade: "6 anos",
+      especie: "cachorro",
+      raca: "pitbull",
+      vacinas: "ok",
+      data: "15/09/2021",
+      descricao: "Dócil",
+      doador: "Carol",
+      foto: "",
+    })
+    .then(function (docRef) {
+      console.log("Document written with ID: ", docRef.id);
+    });
+
+    db.collection("animais")
+    .add({
+      nome: "Lua",
+      nascimento: "404/05/2020",
+      idade: "1 ano",
+      especie: "gato",
+      raca: "siames",
+      vacinas: "ok",
+      data: "15/09/2021",
+      descricao: "Manso",
+      doador: "Gabriel",
+      foto: "",
+    })
+    .then(function (docRef) {
+      console.log("Document written with ID: ", docRef.id);
+    });
+
+    db.collection("animais")
+    .add({
+      nome: "Dora",
+      nascimento: "10/08/2019",
+      idade: "2 anos",
+      especie: "cachorro",
+      raca: "bulldog",
+      vacinas: "ok",
+      data: "15/09/2021",
+      descricao: "Bravo",
+      doador: "Rafael",
+      foto: "",
+    })
+    .then(function (docRef) {
+      console.log("Document written with ID: ", docRef.id);
+    });
+</script>
